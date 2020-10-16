@@ -1,0 +1,2 @@
+Hello ,
+I'm am test to static method in Django and shop App..

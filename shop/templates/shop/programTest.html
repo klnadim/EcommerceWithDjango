@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Program code testing</title>
+</head>
+<body>
+
+<h1>Testing Program Code...</h1>
+
+   {% for i in product|slice:"1:" %}
+    <h2>{{i}}</h2>
+    <h3>{{i.desc}}</h3>
+    <h4>{{i.price}}</h4>
+<!--
+    {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+    <h5>I am in divided by 3</h5>
+    {% else %}
+    <h5>i AM NOT DIVIDED</h5>
+    {% endif %}
+-->
+
+{% cycle "" '<hr>' %}
+
+    {% endfor %}
+
+
+</body>
+</html>
