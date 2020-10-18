@@ -7,7 +7,7 @@ display: inline-block;
 margin-left: -4px;
 }
 .col-md-3 img {
-    width: 272px;
+    width: 230px;
     height: 198px;
 }
 
@@ -44,7 +44,7 @@ padding-right: 0;
 
     <!-- Start Slide coding here -->
     {% for product,range,nSlides in allProds %}
-    <h1>{{product.0.category}}</h1>
+    <h1 class="my-3">{{product.0.category}}</h1>
     <div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
         <ul class="carousel-indicators">
             <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
@@ -65,6 +65,7 @@ padding-right: 0;
                         </div>
                     </div>
                 </div>
+
 
                 {% for i in product|slice:"1:" %}
 
@@ -87,10 +88,11 @@ padding-right: 0;
             </div>
 
         </div>
- </div>
+    </div>
 <!-- Slide left right control from here -->
 <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
+    <span class="carousel-control-prev-icon" ></span>
+
 </a>
 <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
     <span class="carousel-control-next-icon"></span>

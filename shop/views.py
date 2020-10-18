@@ -6,18 +6,33 @@ from math import ceil
 # Create your views here.
 
 def index(request):
-    allProducts = Product.objects.all()
-    n = len(allProducts)
-    nSlides = n // 4 + ceil((n / 4) - (n // 4))
+    # allProducts = Product.objects.all()
+    # n = len(allProducts)
+    # nSlides = n // 4 + ceil((n / 4) - (n // 4))
     # params = {'no_of_slide': nSlides,
     #           'range': range(1, nSlides),
     #           'product': allProducts,
     #
     #           }
 
-    allProds = [[allProducts,range(1,len(allProducts)),nSlides],
-                [allProducts, range(1, len(allProducts)), nSlides]
-                ]
+    allProds = []
+    catProds = Product.objects.values('category','id')
+
+    cats = {item['category'] for item in catProds}
+
+    for cat in cats:
+        prod = Product.objects.filter(category=cat)
+        n = len(prod)
+        nSlides = n // 4 + ceil((n / 4) - (n // 4))
+        allProds.append([prod,range(1,nSlides),nSlides])
+
+
+
+    # allProds = [[allProducts,range(1,len(allProducts)),nSlides],
+    #             [allProducts, range(1, len(allProducts)), nSlides]
+    #             ]
+
+
     params = {'allProds':allProds}
 
 
@@ -32,7 +47,7 @@ def programTest(request):
         'range':range(1,6),
         'nSlide':2
     }
-    print(dictPro)
+
     return render(request,'shop/programTest.html',dictPro)
 
 
