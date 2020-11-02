@@ -19,11 +19,13 @@ def index(request):
     catProds = Product.objects.values('category','id')
 
     cats = {item['category'] for item in catProds}
-
     for cat in cats:
         prod = Product.objects.filter(category=cat)
+
         n = len(prod)
+
         nSlides = n // 4 + ceil((n / 4) - (n // 4))
+
         allProds.append([prod,range(1,nSlides),nSlides])
 
 
@@ -64,8 +66,13 @@ def tracker(request):
 def search(request):
     return render(request, 'shop/search.html')
 
-def productView(request):
-    return render(request, 'shop/productView.html')
+def products(request,myid):
+    #Fetch the products using the id==>>>
+
+    products = Product.objects.filter(id=myid)
+
+
+    return render(request, 'shop/products.html',{'product':products[0]})
 
 def checkout(request):
     return render(request, 'shop/checkout.html')
